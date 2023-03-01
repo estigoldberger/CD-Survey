@@ -1,0 +1,53 @@
+I am the CEO of Chocolate Delights Inc., a wholesale chocolate business based out of Buffalo, NY. As our company approaches our 10th anniversary, we would like to improve our products and services. 
+As such, we have reached out to all our customers asking them to fill out a survey. Now we would like to compile the data in a database so we can review it.
+Our customers are from the tristate area. They have sent us their data of products purchased, the month/year it was purchased and their retail price. 
+
+
+
+
+ I want the following reports:
+1. Which products are most popular in descending order
+2. Product details (item number, description, cost of production, wholesale price)
+3. Which products brought in the most money
+4. Which product brought in the least money
+5. The peak month for each product
+6. Which company brings in the most money
+7. Which customer brings in the least  money
+8. How much profit each customer makes on our products (assuming they sell everything)
+6. How profit increased/decreased by year per item
+
+Q: Do you have customers with more than one branch?
+A: Yes. But none of them have two in one location
+
+Q: From which date are you collecting data?
+A: We collected data from the day of our grand opening- April 1, 2013 through February 1, 2023.
+
+Q: How much profit do you make on each item? 
+A: We sell our products at 20% markup
+
+Q: What is the difference between wholesale and retail price?
+A: Every company has their own amount. We do, however, insist that each item be at least 40% marked up so as not to harm our other customers.
+
+Q: How do you determine product numbers?
+A: They start from 1100 and as of today we have 87 products ( we are working on more)
+
+
+
+I need a table with the following information: Company Name, location (city/town, state), email address, item number, item description, cost of production, wholesale price, retail price, amt purchased, date purchased ( I just want month and year)
+
+
+Sample Data:
+Company, Location, email, item number, item description,  cost of production,  Amt Purchased, date purchased,  retail price
+Sam's Kosher Mart, Mill Basin, NY, samorders@gmail.com, 1165, Chocolate Marshmallows,  .65,  219,  February 2018, 1.2,
+Kaila's Cookery, New Haven,CT, Kailacookery@iccloud.com, 1103, Chocolate Covered Snackers, .78,  30, March 2013, 1.40
+FreshTown, Monsey,NY, customerservice@freshtown.com, 1123, Pecan Chocolate, 2.00,  7, October 2021, 3.36 
+Glatt Mart, Manchester, NJ, chaim@glattmart.com, 1145, Dairy Chocolate Strawberry, .86,  75, October 2023, 1.5
+Confection Connection, Lakewood, NJ, goldyklein@gmail.com, 1100, Dairy Chocolate Balls, 1.10,  800, June 2018, 2.15
+HaMakolet, Waterbury,CT, hamakolet@gmail.com, 1186, Milk Truffles, 1.5,  7, May 2022, 2.52 
+  
+  
+
+
+ 
+
+
