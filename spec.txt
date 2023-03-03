@@ -6,7 +6,7 @@ Our customers are from the tristate area. They have sent us their data of produc
 
 
  I want the following reports:
-1. Which products are most popular in descending order
+1. The amount we sell of each product (in order of most popular to least popular)
 2. Product details (item number, description, cost of production, wholesale price)
 3. Which products brought in the most money
 4. Which product brought in the least money
@@ -33,7 +33,7 @@ A: They start from 1100 and as of today we have 87 products ( we are working on 
 
 
 
-I need a table with the following information: Company Name, location (city/town, state), email address, item number, item description, cost of production, wholesale price, retail price, amt purchased, date purchased ( I just want month and year)
+I want to put the data in tables. I need: Company Name, location (city/town, state), email address, item number, item description, cost of production, wholesale price, retail price, amt purchased, date purchased ( I just want month and year)
 
 
 Sample Data:
