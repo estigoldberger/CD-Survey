@@ -10,7 +10,7 @@ create table Orders(
 	City varchar(50) not null constraint ck_Orders_City_cannot_be_blank check(City > ''),
 	State char(2) not null constraint ck_Orders_State_must_be_NY_NJ_or_CT check(State in ('NY', 'NJ', 'CT')),
 	Email varchar(50) not null constraint ck_Orders_Email_cannot_be_blank check(Email > ''),
-	ItemNum int not null constraint ck_Orders_ItemNum_greater_than_or_equals_1100 check(ItemNum >= 1100),
+	ItemNum int not null constraint ck_Orders_ItemNum_between_1100_and_1187 check(ItemNum between 1100 and 1187),
 	ItemDesc varchar(50) not null constraint ck_Orders_ItemDesc_cannot_be_blank check(ItemDesc > ''),
 	ProductionCost decimal(6,2) not null constraint ck_Orders_ProductionCost_greater_than_zero check(ProductionCost > 0),
 	WholesalePrice as ProductionCost * 1.2 persisted,

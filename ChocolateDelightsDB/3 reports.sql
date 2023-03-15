@@ -6,40 +6,45 @@ select o.ItemDesc, QuantitySold = sum(o.Quantity)
 from Orders o
 group by o.ItemDesc
 order by QuantitySold desc
+
 --2. Product details (item number, description, cost of production, wholesale price)
 select distinct o.ItemNum, o.ItemDesc, o.ProductionCost, o.WholesalePrice
 from orders o
---3. Which products brought in the most money
-select top(1) o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
+
+--3. how much each product brought in (most to least)
+select o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
 from orders o
 group by o.ItemDesc
 order by Profit desc
---4. Which product brought in the least money
-select top(1) o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
-from orders o
-group by o.ItemDesc
-order by Profit 
---5. The peak month for each product
-select o.ItemDesc, o.MonthPurchased, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
+
+--4. The peak month for each product
+;with AmountSoldPerItemPerMonth as (
+select o.ItemDesc, o.MonthPurchased, AmountSold = sum(o.Quantity)
 from orders o
 group by o.ItemDesc, o.MonthPurchased
-order by Profit desc
---6. Which company brings in the most money
-select top(1) o.Company, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
+), MaxAmount as (
+select ItemDesc, MaxAmount = max(AmountSold) 
+from AmountSoldPerItemPerMonth
+group by ItemDesc
+)
+select a.*
+from AmountSoldPerItemPerMonth a
+join MaxAmount m
+on m.ItemDesc = a.ItemDesc and m.MaxAmount = a.AmountSold
+
+--5. How much each company brings (most to least)
+select  o.Company, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
 from orders o
 group by o.Company
 order by Profit desc
---7. Which customer brings in the least  money
-select top(1) o.Company, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
-from orders o
-group by o.Company
-order by Profit
---8. How much profit each customer makes on our products (assuming they sell everything)
+
+--6. How much profit each customer makes on our products (assuming they sell everything)
 select o.Company, Profit = sum((o.RetailPrice - o.WholesalePrice) * o.Quantity)
 from orders o
 group by o.Company
-order by Profit
---6. How profit increased/decreased by year per item
+order by o.Company
+
+--7. How profit increased/decreased by year per item
 ; 
 with x as(
 	select o.YearPurchased, o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
