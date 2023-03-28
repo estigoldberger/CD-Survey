@@ -45,20 +45,15 @@ group by o.Company
 order by o.Company
 
 --7. How profit increased/decreased by year per item
-; 
-with x as(
-	select o.YearPurchased, o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
-	from Orders o
-	where o.YearPurchased = 2020
-	group by o.YearPurchased, o.ItemDesc
-)
-select o.ItemDesc, ProfitChange = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity) - x.Profit
+;
+with FirstYear as(select o.YearPurchased, o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
 from Orders o
-join x
-on o.ItemDesc = x.ItemDesc
-where o.YearPurchased = 2021
-group by o.YearPurchased, o.ItemDesc, x.Profit
-order by o.YearPurchased
-
+group by o.YearPurchased, o.ItemDesc),
+SecondYear as (SELECT o.YearPurchased, o.ItemDesc, Profit = sum((o.WholesalePrice - o.ProductionCost) * o.Quantity)
+from Orders o
+group by o.YearPurchased, o.ItemDesc)
+select c1.YearPurchased, c1.ItemDesc, YearlyGrowth = c1.Profit - c2.Profit 
+from SecondYear c1
+left join FirstYear c2 on c1.ItemDesc = c2.ItemDesc AND c2.YearPurchased = c1.YearPurchased - 1
 
 
